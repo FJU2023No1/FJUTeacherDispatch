@@ -31,16 +31,18 @@
                 android:id="@+id/fjutd_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:gravity="center"
+                android:textStyle="bold"
                 android:textColor="@color/fju_td_app_003f6c"
                 android:textSize="30sp"
                 android:text="輔大中文家教 e Teach"/>
 
             <LinearLayout
+                android:id="@+id/logo_llt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
                 android:layout_below="@+id/fjutd_title"
                 android:gravity="center">
 
@@ -51,7 +53,46 @@
 
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@+id/logo_llt"
+                android:layout_margin="20dp"
+                android:orientation="vertical">
 
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fju_td_app_background_blue_frame"
+                    android:textSize="18sp"
+                    android:textColor="@color/fju_td_app_white"
+                    android:text="我是學生"
+                    android:onClick="@{(view) -> mPresenter.onGoToStudent()}"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/fju_td_app_background_blue_frame"
+                    android:textSize="18sp"
+                    android:textColor="@color/fju_td_app_white"
+                    android:text="我是老師"
+                    android:onClick="@{(view) -> mPresenter.onGoToTeacher()}"/>
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/fju_td_app_background_blue_frame"
+                    android:textSize="18sp"
+                    android:textColor="@color/fju_td_app_white"
+                    android:text="我是管理者"
+                    android:onClick="@{(view) -> mPresenter.onGoToAdministrator()}"/>
+
+            </LinearLayout>
 
         </RelativeLayout>
 
