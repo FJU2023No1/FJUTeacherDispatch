@@ -7,4 +7,7 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!--blue  0, 63, 108-->
+    <color name="fju_td_app_003f6c">#003f6c</color>
 </resources>
