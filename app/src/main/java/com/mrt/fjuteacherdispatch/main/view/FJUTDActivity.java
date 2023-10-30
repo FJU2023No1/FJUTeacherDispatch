@@ -28,6 +28,9 @@ public class FJUTDActivity extends AppCompatActivity {
         mModel = new FJUTDModel();
         mPresenter = new FJUTDPresenter(this, mModel);
 
+        binding.setMModel(mModel);
+        binding.setMPresenter(mPresenter);
+
         mPresenter.init();
     }
 }
