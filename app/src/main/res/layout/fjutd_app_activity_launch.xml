@@ -87,7 +87,7 @@
                             android:paddingTop="30dp"
                             android:paddingBottom="18dp"
                             android:layout_centerVertical="true"
-                            android:layout_toLeftOf="@+id/user_country_img"
+                            android:layout_toLeftOf="@+id/user_identity_img"
                             android:ellipsize="end"
                             android:lines="1"
                             android:text="@{mModel.userIdentityText}"
@@ -95,7 +95,7 @@
                             android:textSize="18sp" />
 
                         <ImageView
-                            android:id="@+id/user_country_img"
+                            android:id="@+id/user_identity_img"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingTop="30dp"
@@ -105,16 +105,16 @@
                             android:src="@drawable/ap_ic_arrowm_black_d_3x" />
 
                         <LinearLayout
-                            android:id="@+id/user_country_layout"
+                            android:id="@+id/user_identity_layout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:minHeight="60dp"
+                            android:minHeight="78dp"
                             android:orientation="vertical" />
 
                     </RelativeLayout>
 
                     <View
-                        android:id="@+id/user_country_view"
+                        android:id="@+id/user_identity_view"
                         android:background="@color/fju_td_app_003f6c"
                         android:layout_width="match_parent"
                         android:layout_height="2dp" />

@@ -1,6 +1,7 @@
 package com.mrt.fjuteacherdispatch.main.view;
 
 import android.os.Bundle;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -32,5 +33,13 @@ public class FJUTDActivity extends AppCompatActivity {
         binding.setMPresenter(mPresenter);
 
         mPresenter.init();
+    }
+
+    /**
+     * 使用者身份Spinner.
+     * @return
+     */
+    public LinearLayout getUserIdentitySpinner() {
+        return binding.userIdentityLayout;
     }
 }

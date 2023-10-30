@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 身分證，發證地點 -->
+    <string-array name="fjutd_app_user_identity_array">
+        <item>學生,1</item>
+        <item>老師,2</item>
+        <item>管理者,3</item>
+    </string-array>
+</resources>
