@@ -25,6 +25,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".tool.SpinnerActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/fju_td_app_theme_transparent_dialog_style" />
     </application>
 
 </manifest>

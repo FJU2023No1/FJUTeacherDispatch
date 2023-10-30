@@ -13,4 +13,10 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <!-- Theme 透明 Activity -->
+    <style name="fju_td_app_theme_transparent_dialog_style" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/fju_td_app_transparent</item>
+        <item name="windowNoTitle">true</item>
+    </style>
 </resources>
