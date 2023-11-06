@@ -26,6 +26,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".main.view.FJUTDRegisterActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/fju_td_app_theme" />
 
         <activity
             android:name=".tool.SpinnerActivity"
