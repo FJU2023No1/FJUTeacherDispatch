@@ -9,22 +9,22 @@ import androidx.databinding.DataBindingUtil;
 
 import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.databinding.FjutdAppActivityRegisterBinding;
-import com.mrt.fjuteacherdispatch.main.model.RegisterModel;
-import com.mrt.fjuteacherdispatch.main.presenter.RegisterPresenter;
+import com.mrt.fjuteacherdispatch.main.model.FJUTDRegisterModel;
+import com.mrt.fjuteacherdispatch.main.presenter.FJUTDRegisterPresenter;
 
-public class RegisterActivity extends AppCompatActivity {
+public class FJUTDRegisterActivity extends AppCompatActivity {
 
     private FjutdAppActivityRegisterBinding binding;
 
-    private RegisterPresenter mPresenter;
+    private FJUTDRegisterPresenter mPresenter;
 
-    private RegisterModel mModel;
+    private FJUTDRegisterModel mModel;
 
     public static void startActivity(
             Activity activity,
             boolean isFinish
     ) {
-        Intent intent = new Intent(activity, RegisterActivity.class);
+        Intent intent = new Intent(activity, FJUTDRegisterActivity.class);
         activity.startActivity(intent);
         if (isFinish) {
             activity.finish();
@@ -38,8 +38,8 @@ public class RegisterActivity extends AppCompatActivity {
                 this,
                 R.layout.fjutd_app_activity_register
         );
-        mModel = new RegisterModel();
-        mPresenter = new RegisterPresenter(this, mModel);
+        mModel = new FJUTDRegisterModel();
+        mPresenter = new FJUTDRegisterPresenter(this, mModel);
 
         binding.setMModel(mModel);
         binding.setMPresenter(mPresenter);

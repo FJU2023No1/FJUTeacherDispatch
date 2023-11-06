@@ -10,11 +10,11 @@
 
         <variable
             name="mModel"
-            type="com.mrt.fjuteacherdispatch.main.model.RegisterModel" />
+            type="com.mrt.fjuteacherdispatch.main.model.FJUTDRegisterModel" />
 
         <variable
             name="mPresenter"
-            type="com.mrt.fjuteacherdispatch.main.presenter.RegisterPresenter" />
+            type="com.mrt.fjuteacherdispatch.main.presenter.FJUTDRegisterPresenter" />
 
     </data>
 
