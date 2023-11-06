@@ -42,7 +42,8 @@
                 android:id="@+id/logo_llt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginBottom="30dp"
                 android:layout_below="@+id/fjutd_title"
                 android:gravity="center">
 
@@ -124,7 +125,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginTop="20dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="20dp"
                     android:orientation="horizontal">
 
                     <androidx.appcompat.widget.AppCompatButton
