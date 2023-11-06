@@ -15,6 +15,7 @@ import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.main.model.FJUTDModel;
 import com.mrt.fjuteacherdispatch.main.model.data.ListUserIdentity;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDActivity;
+import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
 import com.mrt.fjuteacherdispatch.tool.SpinnerActivity;
 
 import java.util.AbstractMap;
@@ -80,15 +81,15 @@ public class FJUTDPresenter {
         mModel.setUserIdentityArray(userIdentityArray);
     }
 
-    public void onGoToStudent() {
-        Toast.makeText(mActivity, "Student", Toast.LENGTH_LONG).show();
+    public void onGoToLogin() {
+        Toast.makeText(mActivity, "前往登入頁", Toast.LENGTH_LONG).show();
     }
 
-    public void onGoToTeacher() {
-        Toast.makeText(mActivity, "Teacher", Toast.LENGTH_LONG).show();
+    public void onGoToRegister() {
+        FJUTDRegisterActivity.startActivity(mActivity, false);
     }
 
-    public void onGoToAdministrator() {
-        Toast.makeText(mActivity, "Admin", Toast.LENGTH_LONG).show();
-    }
+//    public void onGoToAdministrator() {
+//        Toast.makeText(mActivity, "Admin", Toast.LENGTH_LONG).show();
+//    }
 }

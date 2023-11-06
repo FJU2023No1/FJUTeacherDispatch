@@ -137,7 +137,7 @@
                         android:textSize="18sp"
                         android:textColor="@color/fju_td_app_white"
                         android:text="登入"
-                        android:onClick="@{(view) -> mPresenter.onGoToStudent()}"/>
+                        android:onClick="@{(view) -> mPresenter.onGoToLogin()}"/>
 
                     <TextView
                         android:layout_width="0dp"
@@ -152,7 +152,7 @@
                         android:textSize="18sp"
                         android:textColor="@color/fju_td_app_white"
                         android:text="註冊"
-                        android:onClick="@{(view) -> mPresenter.onGoToTeacher()}"/>
+                        android:onClick="@{(view) -> mPresenter.onGoToRegister()}"/>
 
                 </LinearLayout>
 
