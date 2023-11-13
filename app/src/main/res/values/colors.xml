@@ -10,10 +10,15 @@
 
     <color name="fju_td_app_transparent">#00000000</color>
 
+    <!-- white -->
     <color name="fju_td_app_white">#FFFFFFFF</color>
-
-    <!--blue  0, 63, 108-->
+    <!-- black -->
+    <!-- 51, 51, 51 -->
+    <color name="fju_td_app_black_333333">#333333</color>
+    <!-- gray -->
+    <!-- 191, 194, 199 -->
+    <color name="fju_td_app_gray_7fbfc2c7">#7fbfc2c7</color>
+    <!-- blue -->
+    <!-- 0, 63, 108-->
     <color name="fju_td_app_003f6c">#003f6c</color>
-
-    <color name="fju_td_app_7fbfc2c7">#7fbfc2c7</color>
 </resources>
