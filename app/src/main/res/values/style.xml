@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Base EditText Style -->
+    <style name="fju_td_app_base_edittext_style" parent="@android:style/Widget.EditText">
+        <item name="android:background">@null</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:singleLine">true</item>
+    </style>
+
+    <!-- 基本 EditText 底線 Style -->
+    <style name="fju_td_app_edittext_bottom_line_style" parent="fju_td_app_base_edittext_style">
+        <item name="android:background">@drawable/fju_td_app_edit_background_selector</item>
+        <item name="android:textCursorDrawable">@drawable/fju_td_app_edit_background_cursor</item>
+        <item name="android:textColorHint">@color/fju_td_app_gray_bbbbbb</item>
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <!-- text 錯誤訊息顯示 -->
+    <style name="fju_td_app_text_error_msg_style">
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textColor">@color/fju_td_app_red_e95663</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <!-- base btn round 圓角 -->
+    <style name="fju_td_app_base_btn_round" parent="@style/Widget.AppCompat.Button.Borderless">
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginRight">20dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
+    </style>
+
+    <!-- btn round 圓角 blue Style -->
+    <style name="fju_td_app_btn_round_blue_style" parent="fju_td_app_base_btn_round">
+        <item name="android:background">@drawable/fju_td_app_btn_background_round_blue</item>
+        <item name="android:textColor">@color/fju_td_app_white</item>
+    </style>
+</resources>
