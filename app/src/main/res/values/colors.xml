@@ -18,7 +18,18 @@
     <!-- gray -->
     <!-- 191, 194, 199 -->
     <color name="fju_td_app_gray_7fbfc2c7">#7fbfc2c7</color>
+    <!-- 187, 187, 187 -->
+    <color name="fju_td_app_gray_bbbbbb">#bbbbbb</color>
+    <!-- 176, 176, 176 -->
+    <color name="fju_td_app_gray_b0b0b0">#b0b0b0</color>
+    <!-- 165, 165, 165 -->
+    <color name="fju_td_app_gray_a5a5a5">#a5a5a5</color>
+    <!-- 234, 234, 234 -->
+    <color name="fju_td_app_gray_eaeaea">#eaeaea</color>
     <!-- blue -->
     <!-- 0, 63, 108-->
     <color name="fju_td_app_003f6c">#003f6c</color>
+    <!-- red -->
+    <!-- 233, 86, 99 -->
+    <color name="fju_td_app_red_e95663">#e95663</color>
 </resources>
