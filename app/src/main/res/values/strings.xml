@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">FJUTeacherDispatch</string>
+    <!-- 英(大小寫)數字 -->
+    <string name="fju_td_app_enter_digits_english_numbers">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
+
 </resources>

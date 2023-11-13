@@ -18,26 +18,440 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
+        android:id="@+id/main_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
+        android:background="@color/fju_td_app_white">
 
-        <RelativeLayout
+        <ScrollView
+            android:id="@+id/main_scrollview"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_above="@id/determine">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:textSize="18sp"
-                android:textColor="@color/fju_td_app_003f6c"
-                android:textStyle="bold"
-                android:text="我是註冊頁"/>
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-        </RelativeLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp">
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="會員資料填寫"
+                        android:textColor="@color/fju_td_app_003f6c"
+                        android:textSize="34sp"
+                        android:textStyle="bold"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingTop="31dp"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="真實姓名"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <EditText
+                                android:id="@+id/user_name_edit"
+                                style="@style/fju_td_app_edittext_bottom_line_style"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:hint="請填寫真實姓名"
+                                android:imeOptions="actionNext"
+                                android:maxLength="16"
+                                android:minHeight="73dp"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:text="@={mModel.userInfoNameText}"
+                                android:textColorHint="@color/fju_td_app_gray_a5a5a5"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                style="@style/fju_td_app_text_error_msg_style"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/user_name_edit"
+                                android:text="@{mModel.userInfoNameWrong}"
+                                android:visibility="@{!TextUtils.isEmpty(mModel.userInfoNameWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="出生日期"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <EditText
+                                android:id="@+id/user_birthdate_edit"
+                                style="@style/fju_td_app_edittext_bottom_line_style"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:digits="0123456789-"
+                                android:ems="10"
+                                android:hint="西元年月日，例：1999-01-15"
+                                android:imeOptions="actionNext"
+                                android:inputType="phone"
+                                android:maxLength="20"
+                                android:minHeight="73dp"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:text="@={mModel.userInfoBirthDateText}"
+                                android:textColorHint="@color/fju_td_app_gray_a5a5a5"
+                                android:textSize="18sp" />
+
+                            <TextView
+                                style="@style/fju_td_app_text_error_msg_style"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_below="@+id/user_birthdate_edit"
+                                android:text="@{mModel.userInfoBirthDateWrong}"
+                                android:visibility="@{!TextUtils.isEmpty(mModel.userInfoBirthDateWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="會員國籍"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/user_country_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/user_country_img"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@{mModel.userInfoCountryText}"
+                                android:textColor="@color/fju_td_app_black_333333"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/user_country_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                            <LinearLayout
+                                android:id="@+id/user_country_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="73dp"
+                                android:orientation="vertical" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/user_country_view"
+                        android:background="@color/fju_td_app_gray_eaeaea"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        style="@style/fju_td_app_text_error_msg_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{mModel.userInfoCountryWrong}"
+                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="教授科目"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/user_subject_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/user_subject_img"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@{mModel.userInfoCountryText}"
+                                android:textColor="@color/fju_td_app_black_333333"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/user_subject_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                            <LinearLayout
+                                android:id="@+id/user_subject_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="73dp"
+                                android:orientation="vertical" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/user_subject_view"
+                        android:background="@color/fju_td_app_gray_eaeaea"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        style="@style/fju_td_app_text_error_msg_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{mModel.userInfoCountryWrong}"
+                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="會說的語言"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/user_language_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/user_language_img"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@{mModel.userInfoCountryText}"
+                                android:textColor="@color/fju_td_app_black_333333"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/user_language_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                            <LinearLayout
+                                android:id="@+id/user_language_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="73dp"
+                                android:orientation="vertical" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/user_language_view"
+                        android:background="@color/fju_td_app_gray_eaeaea"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        style="@style/fju_td_app_text_error_msg_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{mModel.userInfoCountryWrong}"
+                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="華語教授專長"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/user_skill_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/user_skill_img"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@{mModel.userInfoCountryText}"
+                                android:textColor="@color/fju_td_app_black_333333"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/user_skill_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                            <LinearLayout
+                                android:id="@+id/user_skill_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="73dp"
+                                android:orientation="vertical" />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/user_skill_view"
+                        android:background="@color/fju_td_app_gray_eaeaea"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        style="@style/fju_td_app_text_error_msg_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{mModel.userInfoCountryWrong}"
+                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/determine"
+            style="@style/fju_td_app_btn_round_blue_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="確認送出"
+            android:onClick="@{(view) -> mPresenter.onDetermine()}" />
+
+    </RelativeLayout>
 
 </layout>

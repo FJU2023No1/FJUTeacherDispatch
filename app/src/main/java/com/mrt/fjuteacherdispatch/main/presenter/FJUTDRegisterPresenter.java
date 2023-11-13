@@ -17,4 +17,8 @@ public class FJUTDRegisterPresenter {
 
     public void init() {
     }
+
+    public void onDetermine() {
+
+    }
 }
