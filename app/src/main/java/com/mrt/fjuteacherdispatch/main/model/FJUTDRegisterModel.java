@@ -2,17 +2,31 @@ package com.mrt.fjuteacherdispatch.main.model;
 
 import androidx.databinding.ObservableField;
 
+import com.mrt.fjuteacherdispatch.tool.ClickLock;
+import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class FJUTDRegisterModel {
 
-    /**
-     * 國籍.
-     */
-    public final ObservableField<String> userInfoCountryText = new ObservableField<>();
+    public FJUTDRegisterModel() {
+        clickLock = new ClickLock();
+    }
 
-    /**
-     * 國籍檢核錯誤訊息.
-     */
-    public final ObservableField<String> userInfoCountryWrong = new ObservableField<>();
+    private ClickLock clickLock;
+
+    public ClickLock getClickLock() {
+        return clickLock;
+    }
+
+    public List<MenuItem> userInfoGenderlist = new ArrayList<>();
+
+    public List<MenuItem> userInfoCountrylist = new ArrayList<>();
+
+    public List<MenuItem> userInfoSubjectlist = new ArrayList<>();
+
+    public List<MenuItem> userInfoLanguagelist = new ArrayList<>();
 
     /**
      * 真實姓名.
@@ -25,18 +39,6 @@ public class FJUTDRegisterModel {
     public final ObservableField<String> userInfoNameWrong = new ObservableField<>();
 
     /**
-     * 身分證字號.
-     * 居留證統一編號.
-     */
-    public final ObservableField<String> userInfoIDNoText = new ObservableField<>();
-
-    /**
-     * 身分證字號檢核錯誤訊息.
-     * 居留證統一編號檢核錯誤訊息.
-     */
-    public final ObservableField<String> userInfoIDNoWrong = new ObservableField<>();
-
-    /**
      * 出生日期.
      */
     public final ObservableField<String> userInfoBirthDateText = new ObservableField<>("");
@@ -45,4 +47,44 @@ public class FJUTDRegisterModel {
      * 出生日期檢核錯誤訊息.
      */
     public final ObservableField<String> userInfoBirthDateWrong = new ObservableField<>();
+
+    /**
+     * 性別.
+     */
+    public final ObservableField<String> userInfoGenderText = new ObservableField<>();
+
+    /**
+     * 性別檢核錯誤訊息.
+     */
+    public final ObservableField<String> userInfoGenderWrong = new ObservableField<>();
+
+    /**
+     * 國籍.
+     */
+    public final ObservableField<String> userInfoCountryText = new ObservableField<>();
+
+    /**
+     * 國籍檢核錯誤訊息.
+     */
+    public final ObservableField<String> userInfoCountryWrong = new ObservableField<>();
+
+    /**
+     * 科目.
+     */
+    public final ObservableField<String> userInfoSubjectText = new ObservableField<>();
+
+    /**
+     * 科目錯誤訊息.
+     */
+    public final ObservableField<String> userInfoSubjectWrong = new ObservableField<>();
+
+    /**
+     * 語言.
+     */
+    public final ObservableField<String> userInfoLanguageText = new ObservableField<>();
+
+    /**
+     * 語言檢核錯誤訊息.
+     */
+    public final ObservableField<String> userInfoLanguageWrong = new ObservableField<>();
 }

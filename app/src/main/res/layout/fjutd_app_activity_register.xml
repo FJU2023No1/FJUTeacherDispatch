@@ -89,6 +89,7 @@
                                 android:layout_gravity="center"
                                 android:hint="請填寫真實姓名"
                                 android:imeOptions="actionNext"
+                                android:afterTextChanged="@{mPresenter::afterUserNameChanged}"
                                 android:maxLength="16"
                                 android:minHeight="73dp"
                                 android:paddingTop="30dp"
@@ -139,9 +140,9 @@
                                 android:digits="0123456789-"
                                 android:ems="10"
                                 android:hint="西元年月日，例：1999-01-15"
-                                android:imeOptions="actionNext"
+                                android:imeOptions="actionDone"
                                 android:inputType="phone"
-                                android:maxLength="20"
+                                android:maxLength="10"
                                 android:minHeight="73dp"
                                 android:paddingTop="30dp"
                                 android:paddingBottom="18dp"
@@ -160,6 +161,76 @@
                         </RelativeLayout>
 
                     </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:paddingTop="15dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="性別"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="14sp" />
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:layout_centerVertical="true">
+
+                            <TextView
+                                android:id="@+id/user_gender_edit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_toLeftOf="@+id/user_gender_img"
+                                android:ellipsize="end"
+                                android:lines="1"
+                                android:text="@{mModel.userInfoGenderText}"
+                                android:textColor="@color/fju_td_app_black_333333"
+                                android:textSize="18sp" />
+
+                            <ImageView
+                                android:id="@+id/user_gender_img"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="30dp"
+                                android:paddingBottom="18dp"
+                                android:layout_centerVertical="true"
+                                android:layout_alignParentRight="true"
+                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                            <LinearLayout
+                                android:id="@+id/user_gender_layout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:minHeight="73dp"
+                                android:orientation="vertical"
+                                android:onClick="@{(view) -> mPresenter.onGenderSelect()}"/>
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+                    <View
+                        android:id="@+id/user_gender_view"
+                        android:background="@color/fju_td_app_gray_eaeaea"
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp" />
+
+                    <TextView
+                        style="@style/fju_td_app_text_error_msg_style"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@{mModel.userInfoGenderWrong}"
+                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoGenderWrong)? View.VISIBLE : View.GONE, default=gone}" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -211,7 +282,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:minHeight="73dp"
-                                android:orientation="vertical" />
+                                android:orientation="vertical"
+                                android:onClick="@{(view) -> mPresenter.onCountrySelect()}"/>
 
                         </RelativeLayout>
 
@@ -230,212 +302,145 @@
                         android:text="@{mModel.userInfoCountryWrong}"
                         android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingTop="15dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:paddingTop="15dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="教授科目"
-                            android:textColor="@color/fju_td_app_black_333333"
-                            android:textSize="14sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="教授科目"-->
+<!--                            android:textColor="@color/fju_td_app_black_333333"-->
+<!--                            android:textSize="14sp" />-->
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="73dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:layout_centerVertical="true">
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:minHeight="73dp"-->
+<!--                            android:paddingLeft="15dp"-->
+<!--                            android:paddingRight="15dp"-->
+<!--                            android:layout_centerVertical="true">-->
 
-                            <TextView
-                                android:id="@+id/user_subject_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_toLeftOf="@+id/user_subject_img"
-                                android:ellipsize="end"
-                                android:lines="1"
-                                android:text="@{mModel.userInfoCountryText}"
-                                android:textColor="@color/fju_td_app_black_333333"
-                                android:textSize="18sp" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/user_subject_edit"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="30dp"-->
+<!--                                android:paddingBottom="18dp"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_toLeftOf="@+id/user_subject_img"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:lines="1"-->
+<!--                                android:text="@{mModel.userInfoSubjectText}"-->
+<!--                                android:textColor="@color/fju_td_app_black_333333"-->
+<!--                                android:textSize="18sp" />-->
 
-                            <ImageView
-                                android:id="@+id/user_subject_img"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+<!--                            <ImageView-->
+<!--                                android:id="@+id/user_subject_img"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="30dp"-->
+<!--                                android:paddingBottom="18dp"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />-->
 
-                            <LinearLayout
-                                android:id="@+id/user_subject_layout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="73dp"
-                                android:orientation="vertical" />
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/user_subject_layout"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:minHeight="73dp"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:onClick="@{(view) -> mPresenter.onSubjectSelect()}"/>-->
 
-                        </RelativeLayout>
+<!--                        </RelativeLayout>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <View
-                        android:id="@+id/user_subject_view"
-                        android:background="@color/fju_td_app_gray_eaeaea"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp" />
+<!--                    <View-->
+<!--                        android:id="@+id/user_subject_view"-->
+<!--                        android:background="@color/fju_td_app_gray_eaeaea"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="2dp" />-->
 
-                    <TextView
-                        style="@style/fju_td_app_text_error_msg_style"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{mModel.userInfoCountryWrong}"
-                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+<!--                    <TextView-->
+<!--                        style="@style/fju_td_app_text_error_msg_style"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@{mModel.userInfoSubjectWrong}"-->
+<!--                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoSubjectWrong)? View.VISIBLE : View.GONE, default=gone}" />-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingTop="15dp"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:paddingTop="15dp"-->
+<!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="會說的語言"
-                            android:textColor="@color/fju_td_app_black_333333"
-                            android:textSize="14sp" />
+<!--                        <TextView-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:text="會說的語言"-->
+<!--                            android:textColor="@color/fju_td_app_black_333333"-->
+<!--                            android:textSize="14sp" />-->
 
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="73dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:layout_centerVertical="true">
+<!--                        <RelativeLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:minHeight="73dp"-->
+<!--                            android:paddingLeft="15dp"-->
+<!--                            android:paddingRight="15dp"-->
+<!--                            android:layout_centerVertical="true">-->
 
-                            <TextView
-                                android:id="@+id/user_language_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_toLeftOf="@+id/user_language_img"
-                                android:ellipsize="end"
-                                android:lines="1"
-                                android:text="@{mModel.userInfoCountryText}"
-                                android:textColor="@color/fju_td_app_black_333333"
-                                android:textSize="18sp" />
+<!--                            <TextView-->
+<!--                                android:id="@+id/user_language_edit"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="30dp"-->
+<!--                                android:paddingBottom="18dp"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_toLeftOf="@+id/user_language_img"-->
+<!--                                android:ellipsize="end"-->
+<!--                                android:lines="1"-->
+<!--                                android:text="@{mModel.userInfoLanguageText}"-->
+<!--                                android:textColor="@color/fju_td_app_black_333333"-->
+<!--                                android:textSize="18sp" />-->
 
-                            <ImageView
-                                android:id="@+id/user_language_img"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+<!--                            <ImageView-->
+<!--                                android:id="@+id/user_language_img"-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:paddingTop="30dp"-->
+<!--                                android:paddingBottom="18dp"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />-->
 
-                            <LinearLayout
-                                android:id="@+id/user_language_layout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="73dp"
-                                android:orientation="vertical" />
+<!--                            <LinearLayout-->
+<!--                                android:id="@+id/user_language_layout"-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:minHeight="73dp"-->
+<!--                                android:orientation="vertical"-->
+<!--                                android:onClick="@{(view) -> mPresenter.onLanguageSelect()}"/>-->
 
-                        </RelativeLayout>
+<!--                        </RelativeLayout>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                    <View
-                        android:id="@+id/user_language_view"
-                        android:background="@color/fju_td_app_gray_eaeaea"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp" />
+<!--                    <View-->
+<!--                        android:id="@+id/user_language_view"-->
+<!--                        android:background="@color/fju_td_app_gray_eaeaea"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="2dp" />-->
 
-                    <TextView
-                        style="@style/fju_td_app_text_error_msg_style"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{mModel.userInfoCountryWrong}"
-                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:paddingTop="15dp"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="華語教授專長"
-                            android:textColor="@color/fju_td_app_black_333333"
-                            android:textSize="14sp" />
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:minHeight="73dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
-                            android:layout_centerVertical="true">
-
-                            <TextView
-                                android:id="@+id/user_skill_edit"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_toLeftOf="@+id/user_skill_img"
-                                android:ellipsize="end"
-                                android:lines="1"
-                                android:text="@{mModel.userInfoCountryText}"
-                                android:textColor="@color/fju_td_app_black_333333"
-                                android:textSize="18sp" />
-
-                            <ImageView
-                                android:id="@+id/user_skill_img"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="30dp"
-                                android:paddingBottom="18dp"
-                                android:layout_centerVertical="true"
-                                android:layout_alignParentRight="true"
-                                android:src="@drawable/ap_ic_arrowm_black_d_3x" />
-
-                            <LinearLayout
-                                android:id="@+id/user_skill_layout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:minHeight="73dp"
-                                android:orientation="vertical" />
-
-                        </RelativeLayout>
-
-                    </LinearLayout>
-
-                    <View
-                        android:id="@+id/user_skill_view"
-                        android:background="@color/fju_td_app_gray_eaeaea"
-                        android:layout_width="match_parent"
-                        android:layout_height="2dp" />
-
-                    <TextView
-                        style="@style/fju_td_app_text_error_msg_style"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@{mModel.userInfoCountryWrong}"
-                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoCountryWrong)? View.VISIBLE : View.GONE, default=gone}" />
+<!--                    <TextView-->
+<!--                        style="@style/fju_td_app_text_error_msg_style"-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="@{mModel.userInfoLanguageWrong}"-->
+<!--                        android:visibility="@{!TextUtils.isEmpty(mModel.userInfoLanguageWrong)? View.VISIBLE : View.GONE, default=gone}" />-->
 
                 </LinearLayout>
 

@@ -3,6 +3,7 @@ package com.mrt.fjuteacherdispatch.main.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -45,5 +46,29 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
         binding.setMPresenter(mPresenter);
 
         mPresenter.init();
+    }
+
+    /**
+     * 鎖住確定按鈕.
+     */
+    public void lockButtonDetermine() {
+        binding.determine
+                .setEnabled(false);
+    }
+
+    /**
+     * 解鎖確定按鈕.
+     */
+    public void unlockButtonDetermine() {
+        binding.determine
+                .setEnabled(true);
+    }
+
+    /**
+     * 出生日期.
+     * @return
+     */
+    public EditText getUserBirthdateEdit() {
+        return binding.userBirthdateEdit;
     }
 }
