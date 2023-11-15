@@ -9,10 +9,13 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="fju_td_app_transparent">#00000000</color>
+    <color name="fju_td_app_transparent_40">#66000000</color>
 
     <!-- white -->
     <color name="fju_td_app_white">#FFFFFFFF</color>
     <!-- black -->
+    <!-- 0, 0, 0 -->
+    <color name="fju_td_app_black_000000">#000000</color>
     <!-- 51, 51, 51 -->
     <color name="fju_td_app_black_333333">#333333</color>
     <!-- gray -->
@@ -26,6 +29,8 @@
     <color name="fju_td_app_gray_a5a5a5">#a5a5a5</color>
     <!-- 234, 234, 234 -->
     <color name="fju_td_app_gray_eaeaea">#eaeaea</color>
+    <!-- 238, 238, 238 -->
+    <color name="fju_td_app_gray_eeeeee">#eeeeee</color>
     <!-- blue -->
     <!-- 0, 63, 108-->
     <color name="fju_td_app_003f6c">#003f6c</color>

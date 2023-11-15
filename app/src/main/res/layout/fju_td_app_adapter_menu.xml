@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <variable
+            name="mModel"
+            type="com.mrt.fjuteacherdispatch.tool.menu.model.MenuAdapterModel" />
+
+        <variable
+            name="mPresenter"
+            type="com.mrt.fjuteacherdispatch.tool.menu.presenter.MenuAdapterPresenter" />
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> mPresenter.onClickItem()}">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:gravity="center"
+            android:layout_margin="16dp"
+            android:text="@{mModel.itemName}"
+            android:textColor="@color/fju_td_app_003f6c"
+            android:textSize="20sp" />
+    </RelativeLayout>
+</layout>

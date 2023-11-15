@@ -36,4 +36,11 @@
         <item name="android:background">@drawable/fju_td_app_btn_background_round_blue</item>
         <item name="android:textColor">@color/fju_td_app_white</item>
     </style>
+
+    <!-- bottom_sheet_dialog -->
+    <style name="bottom_sheet_dialog_style" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowBackground">@color/fju_td_app_transparent_40</item>
+        <item name="colorPrimaryDark">@color/fju_td_app_black_000000</item>
+        <item name="android:windowAnimationStyle">@style/Animation.Design.BottomSheetDialog</item>
+    </style>
 </resources>

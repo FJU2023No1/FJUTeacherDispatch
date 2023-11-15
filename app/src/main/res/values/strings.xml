@@ -3,4 +3,5 @@
     <!-- 英(大小寫)數字 -->
     <string name="fju_td_app_enter_digits_english_numbers">0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ</string>
 
+    <string name="fju_td_app_dialog_menu_cancel_msg">取消</string>
 </resources>
