@@ -7,13 +7,11 @@ import android.text.TextWatcher;
 import com.mrt.fjuteacherdispatch.main.model.FJUTDRegisterModel;
 import com.mrt.fjuteacherdispatch.main.model.data.CountryType;
 import com.mrt.fjuteacherdispatch.main.model.data.GenderType;
-import com.mrt.fjuteacherdispatch.main.model.data.IdentityType;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
+import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
 import com.mrt.fjuteacherdispatch.main.view.factory.CountryItemFactory;
 import com.mrt.fjuteacherdispatch.main.view.factory.GenderItemFactory;
-import com.mrt.fjuteacherdispatch.main.view.factory.IdentityItemFactory;
 import com.mrt.fjuteacherdispatch.main.view.verify.VerifyUserInfoPageField;
-import com.mrt.fjuteacherdispatch.tool.AbstractField;
 import com.mrt.fjuteacherdispatch.tool.DateTextWatcher;
 import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
 import com.mrt.fjuteacherdispatch.tool.menu.view.fragment.MenuDialogFragment;
@@ -217,6 +215,6 @@ public class FJUTDRegisterPresenter {
     }
 
     public void onDetermine() {
-
+        MainTabbarActivity.startActivity(mActivity, true);
     }
 }
