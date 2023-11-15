@@ -1,4 +1,4 @@
-package com.mrt.fjuteacherdispatch.main.view;
+package com.mrt.fjuteacherdispatch.main.view.factory;
 
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityItem;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityType;

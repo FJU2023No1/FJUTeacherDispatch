@@ -1,32 +1,22 @@
 package com.mrt.fjuteacherdispatch.main.presenter;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
-import androidx.activity.result.ActivityResult;
-import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 
-import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.main.model.FJUTDModel;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityType;
 import com.mrt.fjuteacherdispatch.main.model.data.ListUserIdentity;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityItem;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDActivity;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
-import com.mrt.fjuteacherdispatch.main.view.IdentityItemFactory;
-import com.mrt.fjuteacherdispatch.tool.SpinnerActivity;
+import com.mrt.fjuteacherdispatch.main.view.factory.IdentityItemFactory;
 import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
 import com.mrt.fjuteacherdispatch.tool.menu.view.fragment.MenuDialogFragment;
 import com.mrt.fjuteacherdispatch.tool.menu.view.listener.MenuListener;
 
-import java.util.AbstractMap;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class FJUTDPresenter {
 
