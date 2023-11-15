@@ -2,7 +2,10 @@ package com.mrt.fjuteacherdispatch.main.model;
 
 import androidx.databinding.ObservableField;
 
+import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
+
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 public class FJUTDModel {
@@ -23,4 +26,5 @@ public class FJUTDModel {
         this.userIdentityArray = userIdentityArray;
     }
 
+    public List<MenuItem> list = new ArrayList<>();
 }
