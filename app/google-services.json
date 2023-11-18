@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "219602819211",
+    "project_id": "fjutd-50265",
+    "storage_bucket": "fjutd-50265.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219602819211:android:8aa7fc31ff47d062ff9c8e",
+        "android_client_info": {
+          "package_name": "com.mrt.fjuteacherdispatch"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDOitBc4Owoa6CxGWaQGxJR53dQ4ZHODU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
