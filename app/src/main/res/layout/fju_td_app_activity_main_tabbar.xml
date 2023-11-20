@@ -15,11 +15,25 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TextView
+            <com.mrt.fjuteacherdispatch.tool.CustomViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:text="首頁"/>
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="1dp"
+                android:clipToPadding="false"
+                android:paddingBottom="42dp" />
+
+            <me.majiajie.pagerbottomtabstrip.PageNavigationView
+                android:id="@+id/tabBar"
+                android:layout_width="match_parent"
+                android:layout_height="74dp"
+                android:layout_alignParentBottom="true"
+                android:layout_gravity="bottom"
+                android:background="@android:color/transparent" />
+
         </RelativeLayout>
+
     </LinearLayout>
+
 </layout>

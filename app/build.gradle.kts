@@ -46,4 +46,5 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
     implementation(platform("org.jetbrains.kotlin:kotlin-bom:1.8.0"))
     implementation("com.github.mazenrashed:recyclerview-flexibledivider:1.5.0")
+    implementation("me.majiajie:pager-bottom-tab-strip:2.4.0")
 }

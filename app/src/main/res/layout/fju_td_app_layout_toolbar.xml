@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <LinearLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fju_td_app_003f6c"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            app:subtitle=""
+            app:title="">
+
+            <RelativeLayout
+                android:id="@+id/toolbarLeftLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="left">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/toolbarLeftImageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:paddingLeft="21dp"
+                    android:paddingTop="15dp"
+                    android:paddingRight="21dp"
+                    android:paddingBottom="15dp"
+                    android:src="@drawable/icon_previous"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/toolbarLeftBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:gravity="left"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/fju_td_app_white"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/toolbarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/fju_td_app_white"
+                android:textSize="17sp" />
+
+            <RelativeLayout
+                android:id="@+id/toolbarRightLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right">
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/toolbarRightImageBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:background="@color/fju_td_app_003f6c"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="22dp"
+                    android:paddingBottom="16dp"
+                    android:src="@drawable/icon_close"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/toolbarRightBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:padding="15dp"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textColor="@color/fju_td_app_white"
+                    android:textSize="17sp"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:id="@+id/toolbarRightView"
+                    android:visibility="gone"
+                    android:padding="15dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </RelativeLayout>
+        </androidx.appcompat.widget.Toolbar>
+    </LinearLayout>
+</layout>
