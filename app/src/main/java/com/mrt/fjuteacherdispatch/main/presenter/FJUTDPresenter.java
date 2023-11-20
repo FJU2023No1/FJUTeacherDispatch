@@ -11,6 +11,7 @@ import com.mrt.fjuteacherdispatch.main.model.data.ListUserIdentity;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityItem;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDActivity;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
+import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
 import com.mrt.fjuteacherdispatch.main.view.factory.IdentityItemFactory;
 import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
 import com.mrt.fjuteacherdispatch.tool.menu.view.fragment.MenuDialogFragment;
@@ -26,8 +27,6 @@ public class FJUTDPresenter {
 
     private ListUserIdentity userIdentities[];
 
-    private ActivityResultLauncher<Intent> activityUserIdentityResultLauncher;
-
     private ArrayList<IdentityItem> identityItems;
 
     public FJUTDPresenter (FJUTDActivity mActivity,
@@ -40,8 +39,6 @@ public class FJUTDPresenter {
         userIdentityForActivityResult();
 
         mModel.userIdentityText.set("請選擇您的身份");
-//        initSpinner();
-//        mActivity.getUserIdentitySpinner().setOnClickListener(mIdentityClickListener);
 
         identityItems = IdentityItemFactory.createItem();
         for (int i = 0; i < identityItems.size(); i++) {
@@ -51,42 +48,14 @@ public class FJUTDPresenter {
     }
 
     public void userIdentityForActivityResult() {
-//        activityUserIdentityResultLauncher = mActivity.registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
-//            @Override
-//            public void onActivityResult(ActivityResult result) {
-//                if(result.getResultCode() == Activity.RESULT_OK) {
-//                    if (result.getData()!=null) {
-//                        Map.Entry<String,String> entry = (Map.Entry<String,String>) result.getData().getSerializableExtra(SpinnerActivity.Result_Data);
-//                        if (entry != null) {
-//                            mModel.userIdentityText.set(entry.getValue());
-//                        }
-//                    }
-//                } else {
-//
-//                }
-//            }
-//        });
     }
 
-//    private View.OnClickListener mIdentityClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//            SpinnerActivity.startActivityForResultLauncher(mActivity, activityUserIdentityResultLauncher, mModel.getUserIdentityArray());
-//        }
-//    };
-
-//    public void initSpinner() {
-//        ArrayList<Map.Entry<String, String>> userIdentityArray = new ArrayList<Map.Entry<String, String>>();
-//        String[] listUserIdentity = mActivity.getResources().getStringArray(R.array.fjutd_app_user_identity_array);
-//        for (String userIdentity: listUserIdentity) {
-//            String[] split = userIdentity.split(",");
-//            userIdentityArray.add(new AbstractMap.SimpleEntry<>(split[1], split[0]));
-//        }
-//        mModel.setUserIdentityArray(userIdentityArray);
-//    }
-
     public void onGoToLogin() {
-        Toast.makeText(mActivity, "前往登入頁", Toast.LENGTH_LONG).show();
+        if (mModel.userIdentityText.get().equals("學生")) {
+            FJUTDRegisterActivity.startActivity(mActivity, false);
+        } else {
+            MainTabbarActivity.startActivity(mActivity, true);
+        }
     }
 
     public void onGoToRegister() {
