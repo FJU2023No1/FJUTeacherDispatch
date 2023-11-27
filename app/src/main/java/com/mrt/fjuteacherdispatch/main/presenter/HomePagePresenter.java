@@ -1,6 +1,8 @@
 package com.mrt.fjuteacherdispatch.main.presenter;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.util.Log;
 
 import com.mrt.fjuteacherdispatch.main.model.HomePageModel;
 import com.mrt.fjuteacherdispatch.main.view.fragment.HomePageFragment;
@@ -20,8 +22,15 @@ public class HomePagePresenter {
 
     }
 
-    public void init() {
+    public void setBundle(Bundle bundle) {
+        if(bundle!=null) {
+            mModel.userIdentityID.set(String.valueOf(bundle.getInt(HomePageFragment.FIELD_USER_TYPE)));
+        }
     }
 
+    public void init() {
+
+        Log.e("TESST", mModel.userIdentityID.get().toString());
+    }
 
 }

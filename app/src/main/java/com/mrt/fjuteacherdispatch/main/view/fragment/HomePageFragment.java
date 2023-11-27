@@ -1,5 +1,7 @@
 package com.mrt.fjuteacherdispatch.main.view.fragment;
 
+import static android.content.Intent.getIntent;
+
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,9 +23,14 @@ public class HomePageFragment extends Fragment {
     private HomePageModel mModel;
     private HomePagePresenter mPresenter;
 
-    public static HomePageFragment newInstance() {
+    public static final String FIELD_USER_TYPE = "fieldUserTypeData";
+
+    public static HomePageFragment newInstance(
+            int userType
+    ) {
         HomePageFragment fragment = new HomePageFragment();
         Bundle bundle = new Bundle();
+        bundle.putInt(FIELD_USER_TYPE, userType);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -44,6 +51,8 @@ public class HomePageFragment extends Fragment {
         View view = binding.getRoot();
 
         initView();
+
+        mPresenter.setBundle(getActivity().getIntent().getExtras());
         mPresenter.init();
 
         return view;

@@ -1,5 +1,7 @@
 package com.mrt.fjuteacherdispatch.main.model;
 
+import androidx.databinding.ObservableField;
+
 import com.mrt.fjuteacherdispatch.tool.ClickLock;
 
 public class HomePageModel {
@@ -13,4 +15,6 @@ public class HomePageModel {
     public ClickLock getClickLock() {
         return clickLock;
     }
+
+    public final ObservableField<String> userIdentityID = new ObservableField<>();
 }
