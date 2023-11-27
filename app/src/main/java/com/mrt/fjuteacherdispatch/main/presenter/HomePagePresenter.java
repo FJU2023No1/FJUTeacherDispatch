@@ -29,8 +29,7 @@ public class HomePagePresenter {
     }
 
     public void init() {
-
-        Log.e("TESST", mModel.userIdentityID.get().toString());
+        mFragment.loadFragment(Integer.parseInt(mModel.userIdentityID.get().toString()));
     }
 
 }

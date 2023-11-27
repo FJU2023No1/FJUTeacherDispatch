@@ -83,16 +83,17 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
         );
         mModel = new MainTabbarModel();
         mPresenter = new MainTabbarPresenter(this, mModel, this);
-        
+
+
         mPresenter.setBundle(getIntent().getExtras());
         mPresenter.init();
+
         initView();
     }
 
     private void initView() {
         mAdapter = new BaseFragmentPagerAdapter(getSupportFragmentManager());
-
-        mAdapter.addFragment(HomePageFragment.newInstance(Integer.parseInt(mModel.userIdentityID.get())),
+        mAdapter.addFragment(HomePageFragment.newInstance(Integer.parseInt(mModel.userIdentityID.get().toString())),
                 HomePageFragment.FRAGMENT_TAG_NAME);
         binding.viewPager.setAdapter(mAdapter);
 

@@ -15,6 +15,9 @@ import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.databinding.FjuTdAppEinvoiceFragmentHomePageBinding;
 import com.mrt.fjuteacherdispatch.main.model.HomePageModel;
 import com.mrt.fjuteacherdispatch.main.presenter.HomePagePresenter;
+import com.mrt.fjuteacherdispatch.main.view.adapter.UserTypePageAdapter;
+import com.mrt.fjuteacherdispatch.main.view.listener.BaseUserTypeBlockListener;
+import com.mrt.fjuteacherdispatch.main.view.listener.UserTypeBlockListener;
 
 public class HomePageFragment extends Fragment {
 
@@ -22,6 +25,8 @@ public class HomePageFragment extends Fragment {
     private FjuTdAppEinvoiceFragmentHomePageBinding binding;
     private HomePageModel mModel;
     private HomePagePresenter mPresenter;
+
+    private UserTypePageAdapter adapter;
 
     public static final String FIELD_USER_TYPE = "fieldUserTypeData";
 
@@ -64,6 +69,29 @@ public class HomePageFragment extends Fragment {
 
     private void setToolbarLayout() {
         binding.toolbarLayout.setTitle("華語教師媒合系統");
+    }
+
+    public void loadFragment(
+            int userType
+    ) {
+        adapter = new UserTypePageAdapter(
+                requireActivity().getSupportFragmentManager(),
+                getLifecycle(),
+                userType
+        );
+        binding.viewpager.setAdapter(adapter);
+        binding.viewpager.setUserInputEnabled(false);
+    }
+
+    public boolean isAdapterInitialized() {
+        return adapter != null;
+    }
+
+    public UserTypeBlockListener getItemListData() {
+        if (adapter != null && adapter.getFragment() instanceof UserTypeBlockListener) {
+            return (UserTypeBlockListener) adapter.getFragment();
+        }
+        return null;
     }
 
 }

@@ -6,6 +6,8 @@ import android.util.Log;
 import com.mrt.fjuteacherdispatch.main.model.MainTabbarModel;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDLoginWebActivity;
 import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
+import com.mrt.fjuteacherdispatch.main.view.adapter.BaseFragmentPagerAdapter;
+import com.mrt.fjuteacherdispatch.main.view.fragment.HomePageFragment;
 import com.mrt.fjuteacherdispatch.main.view.listener.MainTabbarListener;
 
 public class MainTabbarPresenter {
@@ -13,6 +15,8 @@ public class MainTabbarPresenter {
     private MainTabbarActivity mActivity;
     private MainTabbarModel mModel;
     private MainTabbarListener mListener;
+
+    private BaseFragmentPagerAdapter mAdapter;
 
     public MainTabbarPresenter(
             MainTabbarActivity mActivity,
