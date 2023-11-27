@@ -1,5 +1,8 @@
 package com.mrt.fjuteacherdispatch.main.presenter;
 
+import android.os.Bundle;
+import android.util.Log;
+
 import com.mrt.fjuteacherdispatch.main.model.FJUTDLoginWebModel;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDLoginWebActivity;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
@@ -25,6 +28,17 @@ public class FJUTDLoginWebPresenter {
             FJUTDLoginWebModel mModel) {
         this.mActivity = mActivity;
         this.mModel = mModel;
+    }
+
+    public void setBundle(Bundle bundle) {
+
+        if (bundle != null) {
+            if (bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA) != null) {
+                mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA)));
+
+                Log.e("TEST", mModel.userIdentityID.get().toString());
+            }
+        }
     }
 
     public void init() {
@@ -70,9 +84,9 @@ public class FJUTDLoginWebPresenter {
                 String userCount = jsonObject.getString("UserCount");
 
                 if (userCount.equals("1")) {
-                    MainTabbarActivity.startActivity(mActivity, true);
+                    MainTabbarActivity.startActivity(mActivity, true, Integer.parseInt(mModel.userIdentityID.get().toString()));
                 } else {
-                    FJUTDRegisterActivity.startActivity(mActivity, false);
+                    FJUTDRegisterActivity.startActivity(mActivity, Integer.parseInt(mModel.userIdentityID.get().toString()));
                 }
             }
         } catch (Exception e) {

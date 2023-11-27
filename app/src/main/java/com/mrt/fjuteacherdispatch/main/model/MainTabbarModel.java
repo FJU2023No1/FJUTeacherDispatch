@@ -1,5 +1,7 @@
 package com.mrt.fjuteacherdispatch.main.model;
 
+import androidx.databinding.ObservableField;
+
 import me.majiajie.pagerbottomtabstrip.NavigationController;
 
 public class MainTabbarModel {
@@ -13,4 +15,6 @@ public class MainTabbarModel {
     public NavigationController getNavigationController() {
         return mNavigationController;
     }
+
+    public final ObservableField<String> userIdentityID = new ObservableField<>();
 }

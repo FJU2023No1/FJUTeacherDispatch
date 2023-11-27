@@ -1,6 +1,7 @@
 package com.mrt.fjuteacherdispatch.main.view;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -21,6 +22,8 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
 
     private FJUTDRegisterModel mModel;
 
+    public static final String FIELD_USER_TYPE_DATA = "fieldUserTypeData";
+
     public static void startActivity(
             Activity activity,
             boolean isFinish
@@ -30,6 +33,22 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
         if (isFinish) {
             activity.finish();
         }
+    }
+
+    public static void startActivity(
+            Context context
+    ) {
+        Intent intent = new Intent(context, FJUTDRegisterActivity.class);
+        context.startActivity(intent);
+    }
+
+    public static void startActivity(
+            Context context,
+            int userType
+    ) {
+        Intent intent = new Intent(context, FJUTDRegisterActivity.class);
+        intent.putExtra(FIELD_USER_TYPE_DATA, userType);
+        context.startActivity(intent);
     }
 
     @Override
@@ -45,6 +64,7 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
         binding.setMModel(mModel);
         binding.setMPresenter(mPresenter);
 
+        mPresenter.setBundle(getIntent().getExtras());
         mPresenter.init();
     }
 

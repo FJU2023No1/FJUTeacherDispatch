@@ -36,10 +36,26 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
 
     private BaseFragmentPagerAdapter mAdapter;
 
+    public static final String FIELD_USER_TYPE_DATA = "fieldUserTypeData";
+
     public static void startActivity(
             Activity activity,
             boolean isFinish) {
         Intent intent = createIntent(activity);
+        activity.startActivity(intent);
+
+        if (isFinish) {
+            activity.finish();
+        }
+    }
+
+    public static void startActivity(
+            Activity activity,
+            boolean isFinish,
+            int userType
+    ) {
+        Intent intent = createIntent(activity);
+        intent.putExtra(FIELD_USER_TYPE_DATA, userType);
         activity.startActivity(intent);
 
         if (isFinish) {
@@ -69,6 +85,7 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
         mPresenter = new MainTabbarPresenter(this, mModel, this);
 
         initView();
+        mPresenter.setBundle(getIntent().getExtras());
         mPresenter.init();
     }
 

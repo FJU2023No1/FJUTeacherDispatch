@@ -87,4 +87,6 @@ public class FJUTDRegisterModel {
      * 語言檢核錯誤訊息.
      */
     public final ObservableField<String> userInfoLanguageWrong = new ObservableField<>();
+
+    public final ObservableField<String> userIdentityID = new ObservableField<>();
 }

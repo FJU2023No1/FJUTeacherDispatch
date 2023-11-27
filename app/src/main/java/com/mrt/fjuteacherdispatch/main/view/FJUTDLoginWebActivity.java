@@ -20,11 +20,26 @@ public class FJUTDLoginWebActivity extends AppCompatActivity {
 
     private FJUTDLoginWebModel mModel;
 
+    public static final String FIELD_USER_TYPE_DATA = "fieldUserTypeData";
+
     public static void startActivity(
             Activity activity,
             boolean isFinish
     ) {
         Intent intent = new Intent(activity, FJUTDLoginWebActivity.class);
+        activity.startActivity(intent);
+        if (isFinish) {
+            activity.finish();
+        }
+    }
+
+    public static void startActivity(
+            Activity activity,
+            boolean isFinish,
+            int userType
+    ) {
+        Intent intent = new Intent(activity, FJUTDLoginWebActivity.class);
+        intent.putExtra(FIELD_USER_TYPE_DATA, userType);
         activity.startActivity(intent);
         if (isFinish) {
             activity.finish();
@@ -44,6 +59,7 @@ public class FJUTDLoginWebActivity extends AppCompatActivity {
         binding.setMModel(mModel);
         binding.setMPresenter(mPresenter);
 
+        mPresenter.setBundle(getIntent().getExtras());
         mPresenter.init();
     }
 }

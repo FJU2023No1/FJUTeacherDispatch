@@ -1,12 +1,15 @@
 package com.mrt.fjuteacherdispatch.main.presenter;
 
+import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.util.Log;
 
 import com.mrt.fjuteacherdispatch.main.model.FJUTDRegisterModel;
 import com.mrt.fjuteacherdispatch.main.model.data.CountryType;
 import com.mrt.fjuteacherdispatch.main.model.data.GenderType;
+import com.mrt.fjuteacherdispatch.main.view.FJUTDLoginWebActivity;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
 import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
 import com.mrt.fjuteacherdispatch.main.view.factory.CountryItemFactory;
@@ -35,6 +38,17 @@ public class FJUTDRegisterPresenter {
                                   FJUTDRegisterModel mModel) {
         this.mActivity = mActivity;
         this.mModel = mModel;
+    }
+
+    public void setBundle(Bundle bundle) {
+
+        if (bundle != null) {
+            if (bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA) != null) {
+                mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA)));
+
+                Log.e("TEST", mModel.userIdentityID.get().toString());
+            }
+        }
     }
 
     public void init() {

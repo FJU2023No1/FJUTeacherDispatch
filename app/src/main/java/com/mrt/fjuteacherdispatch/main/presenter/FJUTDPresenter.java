@@ -51,7 +51,7 @@ public class FJUTDPresenter {
         if (mModel.userIdentityID.get().toString().equals("0")) {
             Toast.makeText(mActivity, "請選擇身份", Toast.LENGTH_LONG).show();
         } else {
-            FJUTDLoginWebActivity.startActivity(mActivity, false);
+            FJUTDLoginWebActivity.startActivity(mActivity, false, Integer.parseInt(mModel.userIdentityID.get()));
         }
     }
 

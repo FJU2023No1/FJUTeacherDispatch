@@ -19,4 +19,6 @@ public class FJUTDLoginWebModel {
     public final ObservableField<String> userMail = new ObservableField<>();
 
     public final ObservableField<String> userPassword = new ObservableField<>();
+
+    public final ObservableField<String> userIdentityID = new ObservableField<>();
 }
