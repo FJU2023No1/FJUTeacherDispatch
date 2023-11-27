@@ -16,6 +16,8 @@ public class FJUTDModel {
      */
     public final ObservableField<String> userIdentityText = new ObservableField<>();
 
+    public final ObservableField<String> userIdentityID = new ObservableField<>();
+
     private ArrayList<Map.Entry<String,String>> userIdentityArray;
 
     public ArrayList<Map.Entry<String, String>> getUserIdentityArray() {

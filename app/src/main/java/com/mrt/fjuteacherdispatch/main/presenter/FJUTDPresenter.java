@@ -1,17 +1,13 @@
 package com.mrt.fjuteacherdispatch.main.presenter;
 
-import android.content.Intent;
 import android.widget.Toast;
-
-import androidx.activity.result.ActivityResultLauncher;
 
 import com.mrt.fjuteacherdispatch.main.model.FJUTDModel;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityType;
 import com.mrt.fjuteacherdispatch.main.model.data.ListUserIdentity;
 import com.mrt.fjuteacherdispatch.main.model.data.IdentityItem;
 import com.mrt.fjuteacherdispatch.main.view.FJUTDActivity;
-import com.mrt.fjuteacherdispatch.main.view.FJUTDRegisterActivity;
-import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
+import com.mrt.fjuteacherdispatch.main.view.FJUTDLoginWebActivity;
 import com.mrt.fjuteacherdispatch.main.view.factory.IdentityItemFactory;
 import com.mrt.fjuteacherdispatch.tool.menu.model.data.MenuItem;
 import com.mrt.fjuteacherdispatch.tool.menu.view.fragment.MenuDialogFragment;
@@ -38,6 +34,7 @@ public class FJUTDPresenter {
     public void init() {
         userIdentityForActivityResult();
 
+        mModel.userIdentityID.set("0");
         mModel.userIdentityText.set("請選擇您的身份");
 
         identityItems = IdentityItemFactory.createItem();
@@ -51,15 +48,11 @@ public class FJUTDPresenter {
     }
 
     public void onGoToLogin() {
-        if (mModel.userIdentityText.get().equals("學生")) {
-            FJUTDRegisterActivity.startActivity(mActivity, false);
+        if (mModel.userIdentityID.get().toString().equals("0")) {
+            Toast.makeText(mActivity, "請選擇身份", Toast.LENGTH_LONG).show();
         } else {
-            MainTabbarActivity.startActivity(mActivity, true);
+            FJUTDLoginWebActivity.startActivity(mActivity, false);
         }
-    }
-
-    public void onGoToRegister() {
-        FJUTDRegisterActivity.startActivity(mActivity, false);
     }
 
     public void onTypeSelect() {
@@ -67,6 +60,7 @@ public class FJUTDPresenter {
                 new MenuListener<MenuItem>() {
                     @Override
                     public void onClickItem(MenuItem menuItem) {
+                        mModel.userIdentityID.set(String.valueOf(menuItem.getItemId()));
                         mModel.userIdentityText.set(menuItem.getItemName());
                     }
 
