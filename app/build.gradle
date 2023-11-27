@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.mrt.fjuteacherdispatch"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId "com.mrt.fjuteacherdispatch"
@@ -44,6 +44,6 @@ dependencies {
     implementation platform("org.jetbrains.kotlin:kotlin-bom:1.8.0")
     implementation "com.github.mazenrashed:recyclerview-flexibledivider:1.5.0"
     implementation "me.majiajie:pager-bottom-tab-strip:2.4.0"
-    implementation 'com.microsoft.identity.client:msal:4.10.0'
-    implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 }
