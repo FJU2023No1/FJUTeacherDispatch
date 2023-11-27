@@ -45,8 +45,6 @@ public class FJUTDRegisterPresenter {
         if (bundle != null) {
             if (bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA) != null) {
                 mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA)));
-
-                Log.e("TEST", mModel.userIdentityID.get().toString());
             }
         }
     }
