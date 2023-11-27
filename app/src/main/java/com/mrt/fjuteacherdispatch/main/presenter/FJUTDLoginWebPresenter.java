@@ -113,7 +113,6 @@ public class FJUTDLoginWebPresenter {
                             .build();
                     Response response = client.newCall(request).execute();
                     String responseData = response.body().string();
-                    Log.e("TEST", responseData);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
