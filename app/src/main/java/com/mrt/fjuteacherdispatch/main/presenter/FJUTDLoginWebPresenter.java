@@ -86,7 +86,7 @@ public class FJUTDLoginWebPresenter {
                     MainTabbarActivity.startActivity(mActivity, true, Integer.parseInt(mModel.userIdentityID.get().toString()));
                 } else {
                     sendRequestWithOkHttpForAddUser();
-                    FJUTDRegisterActivity.startActivity(mActivity, Integer.parseInt(mModel.userIdentityID.get().toString()));
+                    FJUTDRegisterActivity.startActivity(mActivity, mModel.userMail.get().toString(), Integer.parseInt(mModel.userIdentityID.get().toString()));
                 }
             }
         } catch (Exception e) {

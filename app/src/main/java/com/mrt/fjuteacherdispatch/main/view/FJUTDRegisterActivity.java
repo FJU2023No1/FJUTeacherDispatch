@@ -22,6 +22,7 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
 
     private FJUTDRegisterModel mModel;
 
+    public static final String FIELD_USER_MAIL_DATA = "fieldUserMailData";
     public static final String FIELD_USER_TYPE_DATA = "fieldUserTypeData";
 
     public static void startActivity(
@@ -44,9 +45,11 @@ public class FJUTDRegisterActivity extends AppCompatActivity {
 
     public static void startActivity(
             Context context,
+            String userMail,
             int userType
     ) {
         Intent intent = new Intent(context, FJUTDRegisterActivity.class);
+        intent.putExtra(FIELD_USER_MAIL_DATA, userMail);
         intent.putExtra(FIELD_USER_TYPE_DATA, userType);
         context.startActivity(intent);
     }

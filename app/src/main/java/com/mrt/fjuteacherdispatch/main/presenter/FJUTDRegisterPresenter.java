@@ -22,6 +22,12 @@ import com.mrt.fjuteacherdispatch.tool.menu.view.listener.MenuListener;
 
 import java.util.ArrayList;
 
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
 public class FJUTDRegisterPresenter {
 
     private FJUTDRegisterActivity mActivity;
@@ -43,8 +49,12 @@ public class FJUTDRegisterPresenter {
     public void setBundle(Bundle bundle) {
 
         if (bundle != null) {
-            if (bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA) != null) {
-                mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA)));
+            if (bundle.getSerializable(FJUTDRegisterActivity.FIELD_USER_MAIL_DATA) != null) {
+                mModel.userMail.set(String.valueOf(bundle.getSerializable(FJUTDRegisterActivity.FIELD_USER_MAIL_DATA)));
+            }
+
+            if (bundle.getSerializable(FJUTDRegisterActivity.FIELD_USER_TYPE_DATA) != null) {
+                mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDRegisterActivity.FIELD_USER_TYPE_DATA)));
             }
         }
     }
@@ -227,6 +237,36 @@ public class FJUTDRegisterPresenter {
     }
 
     public void onDetermine() {
+        sendRequestWithOkHttpForAddUser();
         MainTabbarActivity.startActivity(mActivity, true);
+    }
+
+    private void sendRequestWithOkHttpForAddUser() {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+
+                try {
+                    OkHttpClient client = new OkHttpClient();
+                    //POST
+                    RequestBody requestBody = new FormBody.Builder()
+                            .add("UserMail", mModel.userMail.get().toString())
+                            .add("UserName", mModel.userInfoNameText.get().toString())
+                            .add("UserBirthDate", mModel.userInfoBirthDateText.get().toString())
+                            .add("UserGender", mModel.userInfoGenderText.get().toString())
+                            .add("UserCountry", mModel.userInfoCountryText.get().toString())
+                            .build();
+                    Request request = new Request.Builder()
+                            .url("https://lynnxick.synology.me/api/FJU/AddFJUUserInfo.php")
+                            .post(requestBody)
+                            .build();
+                    Response response = client.newCall(request).execute();
+                    String responseData = response.body().string();
+                    Log.e("TEST", responseData);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 }

@@ -88,5 +88,7 @@ public class FJUTDRegisterModel {
      */
     public final ObservableField<String> userInfoLanguageWrong = new ObservableField<>();
 
+    public final ObservableField<String> userMail = new ObservableField<>();
+
     public final ObservableField<String> userIdentityID = new ObservableField<>();
 }
