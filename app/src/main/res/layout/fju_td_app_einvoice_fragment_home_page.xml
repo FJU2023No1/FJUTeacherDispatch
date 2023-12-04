@@ -65,7 +65,7 @@
                                 android:layout_below="@+id/inquire_img"
                                 android:layout_centerHorizontal="true"
                                 android:paddingTop="10dp"
-                                android:text="登記"
+                                android:text="教學報告"
                                 android:textColor="@color/fju_td_app_white" />
                         </RelativeLayout>
                     </LinearLayout>

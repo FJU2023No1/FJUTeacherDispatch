@@ -59,10 +59,7 @@ public class FJUTeacherBlockFragment extends Fragment implements UserTypeBlockLi
 //        mModel.mAdapter = new RegularTaxProductListAdapter(
 //                getActivity(),
 //                mModel,
-//                mParentModel,
-//                mListener,
 //                itemsList,
-//                itemsCheckList
 //        );
 //        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 //        binding.recyclerView.setAdapter(mModel.mAdapter);

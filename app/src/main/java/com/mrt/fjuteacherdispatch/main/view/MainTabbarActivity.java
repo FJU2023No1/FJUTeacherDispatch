@@ -10,7 +10,6 @@ import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.FragmentManager;
 
 import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.databinding.FjuTdAppActivityMainTabbarBinding;
@@ -38,6 +37,8 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
 
     public static final String FIELD_USER_TYPE_DATA = "fieldUserTypeData";
 
+    public static final String FIELD_USER_EMAIL_DATA = "fieldUserEMailData";
+
     public static void startActivity(
             Activity activity,
             boolean isFinish) {
@@ -52,10 +53,12 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
     public static void startActivity(
             Activity activity,
             boolean isFinish,
-            int userType
+            int userType,
+            String userMail
     ) {
         Intent intent = createIntent(activity);
         intent.putExtra(FIELD_USER_TYPE_DATA, userType);
+        intent.putExtra(FIELD_USER_EMAIL_DATA, userMail);
         activity.startActivity(intent);
 
         if (isFinish) {
@@ -110,7 +113,7 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
                 .addItem(newRoundItem(
                         R.drawable.icon_add1,
                         R.drawable.icon_add1,
-                        "Add")
+                        "")
                 )
                 .addItem(newNotItem(R.drawable.fju_td_app_tabbar_default_white))
                 .addItem(newDefaultItem(
@@ -156,5 +159,19 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
         mainTab.initialize(drawable, checkedDrawable, text);
         mainTab.setTextDefaultColor(ContextCompat.getColor(this, R.color.fju_td_app_gray_a5a5a5 ));
         return mainTab;
+    }
+
+    public void onNotification() {
+        NotificationActivity.startActivity(this, "");
+    }
+
+    @Override
+    public void onAddJob() {
+        TeacherAddScheduleActivity.startActivity(this, "");
+    }
+
+    @Override
+    public void onSettings() {
+        SettingActivity.startActivity(this, "");
     }
 }
