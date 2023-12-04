@@ -18,44 +18,326 @@
 
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
+        <com.mrt.fjuteacherdispatch.tool.ToolbarLayout
+            android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:elevation="0dp" />
 
-            <TextView
-                android:id="@+id/fjutd_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/fju_td_app_003f6c"
-                android:textSize="30sp"
-                android:text="登記上課時間"/>
+        <ScrollView
+            android:id="@+id/scrollView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/toolbar_layout">
 
             <LinearLayout
-                android:id="@+id/logo_llt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:layout_marginBottom="20dp"
-                android:layout_below="@+id/fjutd_title"
-                android:gravity="center">
+                android:layout_margin="20dp"
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/fujen_logo"/>
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="登錄上課日期"
+                        android:textColor="@color/fju_td_app_black_333333"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="73dp"
+                        android:layout_centerVertical="true">
+
+                        <EditText
+                            android:id="@+id/class_date_edit"
+                            style="@style/fju_td_app_edittext_bottom_line_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
+                            android:digits="0123456789-"
+                            android:ems="10"
+                            android:hint="西元年月日，例：2023-12-25"
+                            android:imeOptions="actionDone"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:minHeight="73dp"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:text="@={mModel.classDateText}"
+                            android:textColorHint="@color/fju_td_app_gray_a5a5a5"
+                            android:textSize="18sp" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="登錄上課時段"
+                        android:textColor="@color/fju_td_app_black_333333"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="73dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/class_time_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/class_time_img"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{mModel.classTimeText}"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/class_time_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                        <LinearLayout
+                            android:id="@+id/class_time_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:orientation="vertical"
+                            android:onClick="@{(view) -> mPresenter.onClassTimeSelect()}"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/class_time_view"
+                    android:background="@color/fju_td_app_gray_eaeaea"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="授課地點"
+                        android:textColor="@color/fju_td_app_black_333333"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="73dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/class_location_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/class_location_img"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{mModel.classLocationText}"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/class_location_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                        <LinearLayout
+                            android:id="@+id/class_location_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:orientation="vertical"
+                            android:onClick="@{(view) -> mPresenter.onClassLocationSelect()}"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/class_location_view"
+                    android:background="@color/fju_td_app_gray_eaeaea"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="15dp"
+                        android:text="希望待遇"
+                        android:textColor="@color/fju_td_app_black_333333"
+                        android:textSize="14sp" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="73dp">
+
+                        <EditText
+                            android:id="@+id/user_name_edit"
+                            style="@style/fju_td_app_edittext_bottom_line_style"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="40dp"
+                            android:gravity="center|left"
+                            android:hint="請填寫希望待遇(NT$/HR)"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:maxLength="16"
+                            android:minHeight="73dp"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:text="@={mModel.classMoneyText}"
+                            android:textColorHint="@color/fju_td_app_gray_a5a5a5"
+                            android:textSize="18sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="10dp"
+                            android:layout_gravity="center|left"
+                            android:gravity="center|left"
+                            android:text="NT$"
+                            android:textSize="18sp"
+                            android:textColor="@color/fju_td_app_black_333333"/>
+
+                    </FrameLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="授課科目"
+                        android:textColor="@color/fju_td_app_black_333333"
+                        android:textSize="14sp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="73dp"
+                        android:paddingLeft="15dp"
+                        android:paddingRight="15dp"
+                        android:layout_centerVertical="true">
+
+                        <TextView
+                            android:id="@+id/subject_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/subject_img"
+                            android:ellipsize="end"
+                            android:lines="1"
+                            android:text="@{mModel.classSubjectText}"
+                            android:textColor="@color/fju_td_app_black_333333"
+                            android:textSize="18sp" />
+
+                        <ImageView
+                            android:id="@+id/subject_img"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="30dp"
+                            android:paddingBottom="18dp"
+                            android:layout_centerVertical="true"
+                            android:layout_alignParentRight="true"
+                            android:src="@drawable/ap_ic_arrowm_black_d_3x" />
+
+                        <LinearLayout
+                            android:id="@+id/subjec_layout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:minHeight="73dp"
+                            android:orientation="vertical"
+                            android:onClick="@{(view) -> mPresenter.onClassSubjectSelect()}"/>
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/subject_view"
+                    android:background="@color/fju_td_app_gray_eaeaea"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp" />
 
             </LinearLayout>
 
-        </RelativeLayout>
+        </ScrollView>
 
-    </LinearLayout>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/determine"
+            style="@style/fju_td_app_btn_round_blue_style"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:text="確認送出"
+            android:onClick="@{(view) -> mPresenter.onDetermine()}" />
+
+    </RelativeLayout>
 
 </layout>

@@ -77,8 +77,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:minHeight="73dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
+
                             android:layout_centerVertical="true">
 
                             <EditText
@@ -87,6 +86,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
                                 android:hint="請填寫真實姓名"
                                 android:imeOptions="actionNext"
                                 android:afterTextChanged="@{mPresenter::afterUserNameChanged}"
@@ -127,8 +128,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:minHeight="73dp"
-                            android:paddingLeft="15dp"
-                            android:paddingRight="15dp"
+
                             android:layout_centerVertical="true">
 
                             <EditText
@@ -137,6 +137,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
+                                android:paddingLeft="15dp"
+                                android:paddingRight="15dp"
                                 android:digits="0123456789-"
                                 android:ems="10"
                                 android:hint="西元年月日，例：1999-01-15"

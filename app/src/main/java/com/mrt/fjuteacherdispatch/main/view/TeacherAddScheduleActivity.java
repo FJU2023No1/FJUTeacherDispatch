@@ -3,6 +3,8 @@ package com.mrt.fjuteacherdispatch.main.view;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
@@ -57,5 +59,30 @@ public class TeacherAddScheduleActivity extends AppCompatActivity {
 
         mPresenter.setBundle(getIntent().getExtras());
         mPresenter.init();
+
+        initView();
+    }
+
+    private void initView() {
+        setToolbarLayout();
+    }
+
+    private void setToolbarLayout() {
+        binding.toolbarLayout.setTitle("登錄上課時間");
+        binding.toolbarLayout.setLeftImageBtnVisibility(true);
+        binding.toolbarLayout.setLeftImageBtnOnClick(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+    }
+
+    /**
+     * 上課日期.
+     * @return
+     */
+    public EditText getClassDateEdit() {
+        return binding.classDateEdit;
     }
 }
