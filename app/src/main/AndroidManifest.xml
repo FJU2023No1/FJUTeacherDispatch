@@ -43,7 +43,21 @@
             android:exported="false"
             android:screenOrientation="unspecified"
             android:theme="@style/fju_td_app_theme" />
-
+        <activity
+            android:name=".main.view.TeacherAddScheduleActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/fju_td_app_theme" />
+        <activity
+            android:name=".main.view.NotificationActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/fju_td_app_theme" />
+        <activity
+            android:name=".main.view.SettingActivity"
+            android:exported="false"
+            android:screenOrientation="unspecified"
+            android:theme="@style/fju_td_app_theme" />
         <activity
             android:name=".tool.SpinnerActivity"
             android:exported="false"

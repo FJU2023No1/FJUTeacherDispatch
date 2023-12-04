@@ -28,10 +28,13 @@ public class MainTabbarPresenter {
     }
 
     public void setBundle(Bundle bundle) {
-
         if (bundle != null) {
             if (bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA) != null) {
                 mModel.userIdentityID.set(String.valueOf(bundle.getSerializable(FJUTDLoginWebActivity.FIELD_USER_TYPE_DATA)));
+            }
+
+            if (bundle.getSerializable(MainTabbarActivity.FIELD_USER_EMAIL_DATA) != null) {
+                mModel.userMail.set(String.valueOf(bundle.getSerializable(MainTabbarActivity.FIELD_USER_EMAIL_DATA)));
             }
         }
     }
@@ -40,6 +43,14 @@ public class MainTabbarPresenter {
     }
 
     public void tabbarItemOnClick(int index, int old) {
+        mModel.getNavigationController().setSelect(0, false);
 
+        if (index == 1) {
+            mListener.onNotification();
+        } else if (index == 3) {
+            mListener.onAddJob();
+        } else if (index == 5) {
+            mListener.onSettings();
+        }
     }
 }

@@ -238,7 +238,12 @@ public class FJUTDRegisterPresenter {
 
     public void onDetermine() {
         sendRequestWithOkHttpForAddUser();
-        MainTabbarActivity.startActivity(mActivity, true, Integer.parseInt(mModel.userIdentityID.get().toString()));
+        MainTabbarActivity.startActivity(
+                mActivity,
+                true,
+                Integer.parseInt(mModel.userIdentityID.get().toString()),
+                mModel.userMail.get().toString()
+        );
     }
 
     private void sendRequestWithOkHttpForAddUser() {
