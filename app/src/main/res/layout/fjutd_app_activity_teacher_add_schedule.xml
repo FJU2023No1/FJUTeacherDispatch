@@ -238,7 +238,7 @@
                             android:paddingLeft="40dp"
                             android:gravity="center|left"
                             android:hint="請填寫希望待遇(NT$/HR)"
-                            android:imeOptions="actionNext"
+                            android:imeOptions="actionDone"
                             android:inputType="number"
                             android:maxLength="16"
                             android:minHeight="73dp"
