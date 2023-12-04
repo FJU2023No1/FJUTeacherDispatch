@@ -168,11 +168,11 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
     @Override
     public void onAddJob() {
         if (mModel.userIdentityID.get().toString().equals("1")) {
-
+            StudentAddDemandActivity.startActivity(this,  mModel.userMail.get().toString());
         } else if (mModel.userIdentityID.get().toString().equals("2")) {
             TeacherAddScheduleActivity.startActivity(this,  mModel.userMail.get().toString());
         } else {
-            
+
         }
     }
 

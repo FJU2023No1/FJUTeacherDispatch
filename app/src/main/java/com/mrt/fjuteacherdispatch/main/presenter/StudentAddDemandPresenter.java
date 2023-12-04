@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 
-import com.mrt.fjuteacherdispatch.main.model.TeacherAddScheduleModel;
+import com.mrt.fjuteacherdispatch.main.model.StudentAddDemandModel;
+import com.mrt.fjuteacherdispatch.main.model.data.ClassDegreeType;
 import com.mrt.fjuteacherdispatch.main.model.data.ClassLocationType;
 import com.mrt.fjuteacherdispatch.main.model.data.ClassSubjectType;
 import com.mrt.fjuteacherdispatch.main.model.data.ClassTimeType;
-import com.mrt.fjuteacherdispatch.main.view.TeacherAddScheduleActivity;
+import com.mrt.fjuteacherdispatch.main.view.StudentAddDemandActivity;
+import com.mrt.fjuteacherdispatch.main.view.factory.ClassDegreeItemFactory;
 import com.mrt.fjuteacherdispatch.main.view.factory.ClassLocationItemFactory;
 import com.mrt.fjuteacherdispatch.main.view.factory.ClassSubjectItemFactory;
 import com.mrt.fjuteacherdispatch.main.view.factory.ClassTimeItemFactory;
@@ -25,19 +27,19 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class TeacherAddSchedulePresenter {
+public class StudentAddDemandPresenter {
 
-    private TeacherAddScheduleActivity mActivity;
+    private StudentAddDemandActivity mActivity;
 
-    private TeacherAddScheduleModel mModel;
+    private StudentAddDemandModel mModel;
 
-    private ArrayList<MenuItem> classTimeItems, classLocationItems,classSubjectItems;
+    private ArrayList<MenuItem> classTimeItems, classLocationItems, classSubjectItems, classDegreeItems;
 
     private TextWatcher textWatcher422;
 
-    public TeacherAddSchedulePresenter (
-            TeacherAddScheduleActivity mActivity,
-            TeacherAddScheduleModel mModel) {
+    public StudentAddDemandPresenter (
+            StudentAddDemandActivity mActivity,
+            StudentAddDemandModel mModel) {
         this.mActivity = mActivity;
         this.mModel = mModel;
     }
@@ -45,8 +47,8 @@ public class TeacherAddSchedulePresenter {
     public void setBundle(Bundle bundle) {
 
         if (bundle != null) {
-            if (bundle.getSerializable(TeacherAddScheduleActivity.FIELD_USER_EMAIL_DATA) != null) {
-                mModel.userMail.set(String.valueOf(bundle.getSerializable(TeacherAddScheduleActivity.FIELD_USER_EMAIL_DATA)));
+            if (bundle.getSerializable(StudentAddDemandActivity.FIELD_USER_EMAIL_DATA) != null) {
+                mModel.userMail.set(String.valueOf(bundle.getSerializable(StudentAddDemandActivity.FIELD_USER_EMAIL_DATA)));
             }
         }
     }
@@ -66,11 +68,18 @@ public class TeacherAddSchedulePresenter {
             mModel.classLocationlist.add(new MenuItem(classLocationType.getMenuItem().getItemId(), classLocationItems.get(i).getItemName()));
         }
 
-        mModel.classSubjectText.set("請選擇要教授的科目");
+        mModel.classSubjectText.set("請選擇要學習的科目");
         classSubjectItems = ClassSubjectItemFactory.createItem();
         for (int i = 0; i < classSubjectItems.size(); i++) {
             ClassSubjectType classSubjectType = ClassSubjectType.getByteValueName(classSubjectItems.get(i).getItemName());
             mModel.classSubjectlist.add(new MenuItem(classSubjectType.getMenuItem().getItemId(), classSubjectItems.get(i).getItemName()));
+        }
+
+        mModel.classDegreeText.set("請選擇中文程度");
+        classDegreeItems = ClassDegreeItemFactory.createItem();
+        for (int i = 0; i < classDegreeItems.size(); i++) {
+            ClassDegreeType classDegreeType = ClassDegreeType.getByteValueName(classDegreeItems.get(i).getItemName());
+            mModel.classDegreelist.add(new MenuItem(classDegreeType.getMenuItem().getItemId(), classDegreeItems.get(i).getItemName()));
         }
 
         // 出生日期(海外)3-1.
@@ -85,7 +94,7 @@ public class TeacherAddSchedulePresenter {
     }
 
     public void onDetermine() {
-        sendRequestWithOkHttpForAddClassInfo();
+        sendRequestWithOkHttpForAddStudentDemand();
         mActivity.finish();
     }
 
@@ -155,7 +164,29 @@ public class TeacherAddSchedulePresenter {
         );
     }
 
-    private void sendRequestWithOkHttpForAddClassInfo() {
+    public void onClassDegreeSelect() {
+        MenuDialogFragment mMenuDialogFragment = new MenuDialogFragment(
+                new MenuListener<MenuItem>() {
+                    @Override
+                    public void onClickItem(MenuItem menuItem) {
+                        mModel.classDegreeText.set(menuItem.getItemName());
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // Handle cancellation if needed
+                    }
+                },
+                mModel.classDegreelist.toArray(new MenuItem[0])
+        );
+
+        mMenuDialogFragment.show(
+                mActivity.getSupportFragmentManager(),
+                MenuDialogFragment.FRAGMENT_TAG_NAME
+        );
+    }
+
+    private void sendRequestWithOkHttpForAddStudentDemand() {
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -163,14 +194,15 @@ public class TeacherAddSchedulePresenter {
                     OkHttpClient client = new OkHttpClient();
                     //POST
                     RequestBody requestBody = new FormBody.Builder()
-                            .add("TSTeacherEmail", mModel.userMail.get().toString())
-                            .add("TSClassTime", mModel.classDateText.get().toString() + " " + mModel.classTimeText.get().toString())
-                            .add("TSClassLocation", mModel.classLocationText.get().toString())
-                            .add("TSMoney", mModel.classMoneyText.get().toString())
-                            .add("TSSubject", mModel.classSubjectText.get().toString())
+                            .add("SDStudentEmail", mModel.userMail.get().toString())
+                            .add("SDClassTime", mModel.classDateText.get().toString() + " " + mModel.classTimeText.get().toString())
+                            .add("SDClassLocation", mModel.classLocationText.get().toString())
+                            .add("SDContact", mModel.classContactText.get().toString())
+                            .add("SDSubject", mModel.classSubjectText.get().toString())
+                            .add("SDDegree", mModel.classDegreeText.get().toString())
                             .build();
                     Request request = new Request.Builder()
-                            .url("https://lynnxick.synology.me/api/FJU/AddTeacherSchedule.php")
+                            .url("https://lynnxick.synology.me/api/FJU/AddStudentDemand.php")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
