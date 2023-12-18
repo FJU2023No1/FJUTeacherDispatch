@@ -44,7 +44,7 @@ public class UserTypePageAdapter extends FragmentStateAdapter {
                 mFragment = FJUStudentBlockFragment.newInstance(userMail);
                 break;
             case 2:
-                mFragment = FJUTeacherBlockFragment.newInstance();
+                mFragment = FJUTeacherBlockFragment.newInstance(userMail);
                 break;
             case 3:
                 mFragment = FJUAdminBlockFragment.newInstance();

@@ -11,9 +11,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.mrt.fjuteacherdispatch.R;
-import com.mrt.fjuteacherdispatch.databinding.FjuTdAdapterTeacherScheduleItemBinding;
-import com.mrt.fjuteacherdispatch.main.model.data.TeacherSchedule;
-import com.mrt.fjuteacherdispatch.main.presenter.FJUStudentBlockPresenter;
+import com.mrt.fjuteacherdispatch.databinding.FjuTdAdapterStudentDemandItemBinding;
+import com.mrt.fjuteacherdispatch.main.model.data.StudentDemand;
+import com.mrt.fjuteacherdispatch.main.presenter.FJUTeacherBlockPresenter;
 
 import java.util.ArrayList;
 
@@ -23,77 +23,79 @@ import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class TeacherScheduleListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+public class StudentDemandListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private FragmentActivity mActivity;
 
-    private FJUStudentBlockPresenter mPresenter;
+    private FJUTeacherBlockPresenter mPresenter;
 
-    private ArrayList<TeacherSchedule> scheduleList;
+    private ArrayList<StudentDemand> demandList;
 
     private String userMail;
 
     /**
      * @param mActivity
-     * @param scheduleList
+     * @param demandList
      */
-    public TeacherScheduleListAdapter(
+    public StudentDemandListAdapter(
             FragmentActivity mActivity,
-            FJUStudentBlockPresenter mPresenter,
-            ArrayList<TeacherSchedule> scheduleList,
+            FJUTeacherBlockPresenter mPresenter,
+            ArrayList<StudentDemand> demandList,
             String userMail
     ) {
         this.mActivity = mActivity;
         this.mPresenter = mPresenter;
-        this.scheduleList = scheduleList;
+        this.demandList = demandList;
         this.userMail = userMail;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
-        FjuTdAdapterTeacherScheduleItemBinding binding =
-                DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.fju_td_adapter_teacher_schedule_item, viewGroup, false);
-        return new TeacherScheduleListAdapter.ViewHolder(binding);
+        FjuTdAdapterStudentDemandItemBinding binding =
+                DataBindingUtil.inflate(LayoutInflater.from(mActivity), R.layout.fju_td_adapter_student_demand_item, viewGroup, false);
+        return new StudentDemandListAdapter.ViewHolder(binding);
     }
 
     @Override
     public int getItemCount() {
-        return scheduleList.size();
+        return demandList.size();
     }
 
     @SuppressLint("RecyclerView")
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        TeacherScheduleListAdapter.ViewHolder mHolder = (TeacherScheduleListAdapter.ViewHolder) holder;
+        StudentDemandListAdapter.ViewHolder mHolder = (StudentDemandListAdapter.ViewHolder) holder;
 
-        mHolder.binding.classDateTime.setText(scheduleList.get(position).TSClassTime);
-        mHolder.binding.classSubject.setText(scheduleList.get(position).TSSubject);
-        mHolder.binding.classLocation.setText(scheduleList.get(position).TSClassLocation);
-        mHolder.binding.classMoney.setText(String.valueOf(scheduleList.get(position).TSMoney));
-        mHolder.binding.teacherMail.setText(scheduleList.get(position).TSTeacherEmail);
+        mHolder.binding.classDateTime.setText(demandList.get(position).SDClassTime);
+        mHolder.binding.classSubject.setText(demandList.get(position).SDSubject);
+        mHolder.binding.classLocation.setText(demandList.get(position).SDClassLocation);
+        mHolder.binding.classDegree.setText(String.valueOf(demandList.get(position).SDDegree));
+        mHolder.binding.studentPhone.setText(demandList.get(position).SDContact);
+        mHolder.binding.studentMail.setText(demandList.get(position).SDStudentEmail);
 
         mHolder.binding.determine.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                sendRequestWithOkHttpForReserveTeacherSchedule(scheduleList.get(position).TSID);
-                mPresenter.sendRequestWithOkHttpForSearchTeacherSchedule();
+                sendRequestWithOkHttpForOfferStudentDemand(demandList.get(position).SDID);
+                mPresenter.sendRequestWithOkHttpForSearchStudentDemand();
             }
         });
     }
 
-    private void sendRequestWithOkHttpForReserveTeacherSchedule(int TSID) {
+    private void sendRequestWithOkHttpForOfferStudentDemand(int SDID) {
         new Thread(new Runnable() {
             @Override
             public void run() {
+                Log.e("TEST", String.valueOf(SDID) + "_" + userMail);
                 try {
                     OkHttpClient client = new OkHttpClient();
                     //POST
                     RequestBody requestBody = new FormBody.Builder()
-                            .add("StudentID", userMail)
-                            .add("TSID", String.valueOf(TSID))
+                            .add("TeacherID", userMail)
+                            .add("SDID", String.valueOf(SDID))
                             .build();
                     Request request = new Request.Builder()
-                            .url("https://lynnxick.synology.me/api/FJU/ReserveTeacherSchedule.php")
+                            .url("https://lynnxick.synology.me/api/FJU/OfferStudentDemand.php")
                             .post(requestBody)
                             .build();
                     Response response = client.newCall(request).execute();
@@ -106,9 +108,9 @@ public class TeacherScheduleListAdapter extends RecyclerView.Adapter<RecyclerVie
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        FjuTdAdapterTeacherScheduleItemBinding binding;
+        FjuTdAdapterStudentDemandItemBinding binding;
 
-        ViewHolder(FjuTdAdapterTeacherScheduleItemBinding binding) {
+        ViewHolder(FjuTdAdapterStudentDemandItemBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }

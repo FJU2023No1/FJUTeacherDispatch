@@ -7,13 +7,19 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.databinding.FjuTdAppFragmentTeacherBlockBinding;
 import com.mrt.fjuteacherdispatch.main.model.FJUTeacherBlockModel;
+import com.mrt.fjuteacherdispatch.main.model.data.StudentDemand;
+import com.mrt.fjuteacherdispatch.main.model.data.TeacherSchedule;
 import com.mrt.fjuteacherdispatch.main.presenter.FJUTeacherBlockPresenter;
+import com.mrt.fjuteacherdispatch.main.view.adapter.StudentDemandListAdapter;
 import com.mrt.fjuteacherdispatch.main.view.listener.FJUTeacherBlockListener;
 import com.mrt.fjuteacherdispatch.main.view.listener.UserTypeBlockListener;
+
+import java.util.ArrayList;
 
 public class FJUTeacherBlockFragment extends Fragment implements UserTypeBlockListener {
 
@@ -25,9 +31,12 @@ public class FJUTeacherBlockFragment extends Fragment implements UserTypeBlockLi
 
     private FJUTeacherBlockListener mListener;
 
-    public static FJUTeacherBlockFragment newInstance() {
+    public static final String FIELD_USER_EMAIL = "fieldUserEmailData";
+
+    public static FJUTeacherBlockFragment newInstance(String userMail) {
         FJUTeacherBlockFragment fragment = new FJUTeacherBlockFragment();
         Bundle bundle = new Bundle();
+        bundle.putString(FIELD_USER_EMAIL, userMail);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -54,15 +63,17 @@ public class FJUTeacherBlockFragment extends Fragment implements UserTypeBlockLi
     }
 
     public void setRecyclerViewMessages(
-
+            ArrayList<StudentDemand> studentDemandList,
+            String userMail
     ) {
-//        mModel.mAdapter = new RegularTaxProductListAdapter(
-//                getActivity(),
-//                mModel,
-//                itemsList,
-//        );
-//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        binding.recyclerView.setAdapter(mModel.mAdapter);
-//        binding.recyclerView.setVisibility(View.VISIBLE);
+        mModel.mAdapter = new StudentDemandListAdapter(
+                getActivity(),
+                mPresenter,
+                studentDemandList,
+                userMail
+        );
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        binding.recyclerView.setAdapter(mModel.mAdapter);
+        binding.recyclerView.setVisibility(View.VISIBLE);
     }
 }
