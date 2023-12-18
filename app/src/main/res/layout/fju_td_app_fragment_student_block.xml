@@ -31,15 +31,16 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp">
 
-                    <TextView
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:textStyle="bold"
-                        android:textSize="30sp"
-                        android:text="學生"/>
+                        android:layout_marginTop="16dp"
+                        android:visibility="gone" />
 
                 </RelativeLayout>
 

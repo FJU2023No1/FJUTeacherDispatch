@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.mrt.fjuteacherdispatch.main.model.HomePageModel;
+import com.mrt.fjuteacherdispatch.main.view.MainTabbarActivity;
 import com.mrt.fjuteacherdispatch.main.view.fragment.HomePageFragment;
 
 
@@ -19,17 +20,17 @@ public class HomePagePresenter {
         this.mContext = mContext;
         this.mModel = mModel;
         this.mFragment = mFragment;
-
     }
 
     public void setBundle(Bundle bundle) {
-        if(bundle!=null) {
+        if (bundle != null) {
             mModel.userIdentityID.set(String.valueOf(bundle.getInt(HomePageFragment.FIELD_USER_TYPE)));
+            mModel.userMail.set(String.valueOf(bundle.getSerializable(MainTabbarActivity.FIELD_USER_EMAIL_DATA)));
         }
     }
 
     public void init() {
-        mFragment.loadFragment(Integer.parseInt(mModel.userIdentityID.get().toString()));
+        mFragment.loadFragment(Integer.parseInt(mModel.userIdentityID.get().toString()), mModel.userMail.get().toString());
     }
 
 }

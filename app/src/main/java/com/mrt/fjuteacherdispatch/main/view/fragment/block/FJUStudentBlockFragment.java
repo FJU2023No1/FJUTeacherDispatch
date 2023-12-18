@@ -7,13 +7,18 @@ import android.view.ViewGroup;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.mrt.fjuteacherdispatch.R;
 import com.mrt.fjuteacherdispatch.databinding.FjuTdAppFragmentStudentBlockBinding;
 import com.mrt.fjuteacherdispatch.main.model.FJUStudentBlockModel;
+import com.mrt.fjuteacherdispatch.main.model.data.TeacherSchedule;
 import com.mrt.fjuteacherdispatch.main.presenter.FJUStudentBlockPresenter;
+import com.mrt.fjuteacherdispatch.main.view.adapter.TeacherScheduleListAdapter;
 import com.mrt.fjuteacherdispatch.main.view.listener.FJUStudentBlockListener;
 import com.mrt.fjuteacherdispatch.main.view.listener.UserTypeBlockListener;
+
+import java.util.ArrayList;
 
 public class FJUStudentBlockFragment extends Fragment implements UserTypeBlockListener {
 
@@ -25,9 +30,12 @@ public class FJUStudentBlockFragment extends Fragment implements UserTypeBlockLi
 
     private FJUStudentBlockListener mListener;
 
-    public static FJUStudentBlockFragment newInstance() {
+    public static final String FIELD_USER_EMAIL = "fieldUserEmailData";
+
+    public static FJUStudentBlockFragment newInstance(String userMail) {
         FJUStudentBlockFragment fragment = new FJUStudentBlockFragment();
         Bundle bundle = new Bundle();
+        bundle.putString(FIELD_USER_EMAIL, userMail);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -54,18 +62,17 @@ public class FJUStudentBlockFragment extends Fragment implements UserTypeBlockLi
     }
 
     public void setRecyclerViewMessages(
-
+            ArrayList<TeacherSchedule> scheduleList,
+            String userMail
     ) {
-//        mModel.mAdapter = new RegularTaxProductListAdapter(
-//                getActivity(),
-//                mModel,
-//                mParentModel,
-//                mListener,
-//                itemsList,
-//                itemsCheckList
-//        );
-//        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        binding.recyclerView.setAdapter(mModel.mAdapter);
-//        binding.recyclerView.setVisibility(View.VISIBLE);
+        mModel.mAdapter = new TeacherScheduleListAdapter(
+                getActivity(),
+                mPresenter,
+                scheduleList,
+                userMail
+        );
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(requireActivity()));
+        binding.recyclerView.setAdapter(mModel.mAdapter);
+        binding.recyclerView.setVisibility(View.VISIBLE);
     }
 }

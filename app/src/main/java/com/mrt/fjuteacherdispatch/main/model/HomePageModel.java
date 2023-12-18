@@ -17,4 +17,6 @@ public class HomePageModel {
     }
 
     public final ObservableField<String> userIdentityID = new ObservableField<>();
+
+    public final ObservableField<String> userMail = new ObservableField<>();
 }

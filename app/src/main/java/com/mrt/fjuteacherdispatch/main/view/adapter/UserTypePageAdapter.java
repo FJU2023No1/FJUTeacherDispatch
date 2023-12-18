@@ -19,12 +19,17 @@ public class UserTypePageAdapter extends FragmentStateAdapter {
 
     private int userType;
 
+    private String userMail;
+
     public UserTypePageAdapter(
             FragmentManager fragmentManager,
             Lifecycle lifecycle,
-            int userType) {
+            int userType,
+            String userMail
+            ) {
         super(fragmentManager, lifecycle);
         this.userType = userType;
+        this.userMail = userMail;
     }
 
     @Override
@@ -36,7 +41,7 @@ public class UserTypePageAdapter extends FragmentStateAdapter {
     public Fragment createFragment(int position) {
         switch (userType) {
             case 1:
-                mFragment = FJUStudentBlockFragment.newInstance();
+                mFragment = FJUStudentBlockFragment.newInstance(userMail);
                 break;
             case 2:
                 mFragment = FJUTeacherBlockFragment.newInstance();

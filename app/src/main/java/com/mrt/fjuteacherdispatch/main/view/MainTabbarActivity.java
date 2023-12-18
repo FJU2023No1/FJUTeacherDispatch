@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.annotation.DrawableRes;
@@ -96,7 +97,7 @@ public class MainTabbarActivity extends AppCompatActivity implements MainTabbarL
 
     private void initView() {
         mAdapter = new BaseFragmentPagerAdapter(getSupportFragmentManager());
-        mAdapter.addFragment(HomePageFragment.newInstance(Integer.parseInt(mModel.userIdentityID.get().toString())),
+        mAdapter.addFragment(HomePageFragment.newInstance(Integer.parseInt(mModel.userIdentityID.get().toString()), mModel.userMail.get().toString()),
                 HomePageFragment.FRAGMENT_TAG_NAME);
         binding.viewPager.setAdapter(mAdapter);
 

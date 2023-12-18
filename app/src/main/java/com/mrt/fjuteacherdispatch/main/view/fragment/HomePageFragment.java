@@ -3,6 +3,7 @@ package com.mrt.fjuteacherdispatch.main.view.fragment;
 import static android.content.Intent.getIntent;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,12 +31,16 @@ public class HomePageFragment extends Fragment {
 
     public static final String FIELD_USER_TYPE = "fieldUserTypeData";
 
+    public static final String FIELD_USER_EMAIL = "fieldUserEmailData";
+
     public static HomePageFragment newInstance(
-            int userType
+            int userType,
+            String userMail
     ) {
         HomePageFragment fragment = new HomePageFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(FIELD_USER_TYPE, userType);
+        bundle.putSerializable(FIELD_USER_EMAIL, userMail);
         fragment.setArguments(bundle);
         return fragment;
     }
@@ -72,12 +77,14 @@ public class HomePageFragment extends Fragment {
     }
 
     public void loadFragment(
-            int userType
+            int userType,
+            String userMail
     ) {
         adapter = new UserTypePageAdapter(
                 requireActivity().getSupportFragmentManager(),
                 getLifecycle(),
-                userType
+                userType,
+                userMail
         );
         binding.viewpager.setAdapter(adapter);
         binding.viewpager.setUserInputEnabled(false);
